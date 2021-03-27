@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyucumber-deployment
+  labels:
+    app: kyucumber
+spec:
+  replicas: 3
+  minReadySeconds: 10
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app: kyucumber
+  template:
+    metadata:
+      labels:
+        app: kyucumber
+    spec:
+      containers:
+        - name: kyucumber
+          image: kyucumber/sendbox:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PARAM
+              value: "v1"
+          readinessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            httpGet:
+              path: /
+              port: 8080

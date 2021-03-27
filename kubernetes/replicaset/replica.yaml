@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kyucumber
+  template:
+    metadata:
+      labels:
+        app: kyucumber
+        version: v3
+    spec:
+      containers:
+        - name: kyucumber
+          image: kyucumber/sendbox:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PARAM
+              value: "v3"
+
+

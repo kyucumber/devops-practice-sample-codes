@@ -1,0 +1,13 @@
+- name: install OpenJDK 8
+  become: yes
+  yum:
+    name: java-1.8.0-openjdk-devel
+    state: latest
+    lock_timeout: 180
+
+- name: correct java version selected
+  become: yes
+  alternatives:
+    name: java
+    path: /usr/lib/jvm/java-1.8.0-openjdk/jre/bin/java
+    link: /usr/bin/java

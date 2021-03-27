@@ -1,1 +1,3 @@
-# devops-practice-sample-codes
+# 샘플 코드 저장소
+
+예제 및 포스팅에 사용하는 샘플 코드를 저장합니다.

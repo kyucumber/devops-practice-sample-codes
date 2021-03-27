@@ -1,0 +1,5 @@
+.envrc
+.terraform
+.terraform.*
+terraform.*
+.idea
